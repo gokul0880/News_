@@ -21,14 +21,46 @@ function fetchNews(category = 'general') {
                     <img src="${article.urlToImage || 'https://via.placeholder.com/400x200'}" alt="News Image">
                     <div class="news-card-content">
                         <h3>${article.title}</h3>
-                        <p>${article.description || 'No description available.'} <a href="${article.url}" target="_blank">Read more</a></p>
+                        <p>${article.description || 'No description available.'}</p>
                         <span>Published on: ${new Date(article.publishedAt).toDateString()}</span>
                     </div>
                 `;
                 newsContainer.appendChild(newsItem);
+
+                // Add click event to open modal
+                newsItem.addEventListener("click", () => {
+                    openModal(article);
+                });
             });
         })
         .catch(error => console.error("Error fetching news:", error));
+}
+
+// Function to open modal
+function openModal(article) {
+    const modal = document.getElementById("news-modal");
+    const textOption = document.getElementById("text-option");
+    const voiceOption = document.getElementById("voice-option");
+
+    modal.style.display = "flex";
+
+    // Text option
+    textOption.onclick = () => {
+        alert(`Title: ${article.title}\nDescription: ${article.description}`);
+        modal.style.display = "none";
+    };
+
+    // Voice option
+    voiceOption.onclick = () => {
+        const utterance = new SpeechSynthesisUtterance(`${article.title}. ${article.description}`);
+        speechSynthesis.speak(utterance);
+        modal.style.display = "none";
+    };
+
+    // Close modal
+    document.querySelector(".close").onclick = () => {
+        modal.style.display = "none";
+    };
 }
 
 // Load trending news (general) on page load

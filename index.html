@@ -20,9 +20,19 @@
 
     <!-- News Section -->
     <section id="news">
-        <h2>Latest News</h2> <!-- This will be dynamically updated -->
-        <div id="news-container" class="news-grid"></div> <!-- News will be loaded here -->
+        <h2>Latest News</h2>
+        <div id="news-container" class="news-grid"></div>
     </section>
+
+    <!-- Modal for Text/Voice Option -->
+    <div id="news-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Choose an Option</h3>
+            <button id="text-option">Read as Text</button>
+            <button id="voice-option">Listen as Voice</button>
+        </div>
+    </div>
 
     <script src="news.js"></script>
 </body>
