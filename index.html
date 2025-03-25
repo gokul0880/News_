@@ -9,49 +9,141 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>தமிழ் செய்திகள்</h1>
-            <p>ஒரே இடத்தில் அனைத்து முக்கியமான தமிழ் செய்திகள்</p>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>விருப்பங்கள்</h3>
+            <button class="close-btn" id="close-sidebar">&times;</button>
         </div>
-    </header>
+        <ul>
+            <li><a href="#"><i class="fas fa-cog"></i> அமைப்புகள்</a></li>
+            <li><a href="#"><i class="fas fa-bell"></i> அறிவிப்புகள்</a></li>
+            <li><a href="#"><i class="fas fa-history"></i> வரலாறு</a></li>
+            <li><a href="#"><i class="fas fa-bookmark"></i> புத்தகக்குறிகள்</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i> உதவி</a></li>
+        </ul>
+    </div>
 
-    <nav>
-        <div class="container">
-            <ul class="categories">
-                <li><a href="#" class="active" data-category="general">முக்கிய செய்திகள்</a></li>
-                <li><a href="#" data-category="business">வணிகம்</a></li>
-                <li><a href="#" data-category="sports">விளையாட்டு</a></li>
-                <li><a href="#" data-category="technology">தொழில்நுட்பம்</a></li>
-                <li><a href="#" data-category="entertainment">மனோரஞ்சிதம்</a></li>
-                <li><a href="#" data-category="health">ஆரோக்கியம்</a></li>
-            </ul>
+    <div class="main-content" id="main-content">
+        <header>
+            <div class="container">
+                <button class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+                <h1>தமிழ் செய்திகள்</h1>
+                <p>ஒரே இடத்தில் அனைத்து முக்கியமான தமிழ் செய்திகள்</p>
+            </div>
+        </header>
+
+        <nav>
+            <div class="container">
+                <ul class="categories">
+                    <li><a href="#" class="active" data-category="general">முக்கிய செய்திகள்</a></li>
+                    <li><a href="#" data-category="business">வணிகம்</a></li>
+                    <li><a href="#" data-category="sports">விளையாட்டு</a></li>
+                    <li><a href="#" data-category="technology">தொழில்நுட்பம்</a></li>
+                    <li><a href="#" data-category="entertainment">மனோரஞ்சிதம்</a></li>
+                    <li><a href="#" data-category="health">ஆரோக்கியம்</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="container">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="செய்திகளில் தேடு...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>செய்திகள் ஏற்றுகிறது...</p>
+            </div>
+
+            <div id="news-container" class="news-grid"></div>
+
+            <div id="error-message" class="error-message"></div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2023 தமிழ் செய்திகள். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</p>
+                <p>API Powered by GNews</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for read options -->
+    <!-- Modal for read options -->
+<div id="read-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>செய்தியை எப்படி படிக்க விரும்புகிறீர்கள்?</h3>
+        <div class="modal-options">
+            <button id="read-text" class="modal-btn">
+                <i class="fas fa-book-open"></i>
+                <span>உரையாக படிக்க</span>
+            </button>
+            <button id="read-voice" class="modal-btn">
+                <i class="fas fa-volume-up"></i>
+                <span>குரலாக கேட்க</span>
+            </button>
         </div>
-    </nav>
+    </div>
+</div>
 
-    <main class="container">
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="செய்திகளில் தேடு...">
-            <button id="search-btn"><i class="fas fa-search"></i></button>
+<!-- Modal for text options -->
+<div id="text-options-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>எந்த வகையான உரையை படிக்க விரும்புகிறீர்கள்?</h3>
+        <div class="modal-options">
+            <button id="read-full" class="modal-btn">
+                <i class="fas fa-newspaper"></i>
+                <span>முழு செய்தி</span>
+            </button>
+            <button id="read-summary" class="modal-btn">
+                <i class="fas fa-file-contract"></i>
+                <span>சுருக்கமான செய்தி</span>
+            </button>
         </div>
+    </div>
+</div>
 
-        <div id="loading" class="loading">
-            <div class="spinner"></div>
-            <p>செய்திகள் ஏற்றுகிறது...</p>
+<!-- Summary page (hidden by default) -->
+<div id="summary-page" class="hidden-page">
+    <div class="container">
+        <button id="back-btn" class="back-btn"><i class="fas fa-arrow-left"></i> திரும்பு</button>
+        <div id="summary-content"></div>
+    </div>
+</div>
+
+    <!-- Modal for slang selection -->
+    <div id="slang-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>எந்த பேச்சு மொழியில் கேட்க விரும்புகிறீர்கள்?</h3>
+            <div class="modal-options slang-options">
+                <button data-slang="normal" class="modal-btn">
+                    <i class="fas fa-language"></i>
+                    <span>நிலையான தமிழ்</span>
+                </button>
+                <button data-slang="coimbatore" class="modal-btn">
+                    <i class="fas fa-language"></i>
+                    <span>கோயம்புத்தூர் பேச்சு</span>
+                </button>
+                <button data-slang="madurai" class="modal-btn">
+                    <i class="fas fa-language"></i>
+                    <span>மதுரை பேச்சு</span>
+                </button>
+                <button data-slang="thoothukudi" class="modal-btn">
+                    <i class="fas fa-language"></i>
+                    <span>தூத்துக்குடி பேச்சு</span>
+                </button>
+                <button data-slang="chennai" class="modal-btn">
+                    <i class="fas fa-language"></i>
+                    <span>சென்னை பேச்சு</span>
+                </button>
+            </div>
         </div>
+    </div>
 
-        <div id="news-container" class="news-grid"></div>
-
-        <div id="error-message" class="error-message"></div>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 தமிழ் செய்திகள். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</p>
-            <p>API Powered by GNews</p>
-        </div>
-    </footer>
-
-    <script src="news.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
