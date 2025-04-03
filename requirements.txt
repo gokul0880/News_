@@ -1,0 +1,5 @@
+echo "flask
+flask-cors
+transformers
+torch
+gtts" > tamil-news-app/requirements.txt
