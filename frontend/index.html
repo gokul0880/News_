@@ -69,55 +69,82 @@
         </footer>
     </div>
 
-    <!-- Modal for read options -->
-    <!-- Modal for read options -->
-<div id="read-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h3>செய்தியை எப்படி படிக்க விரும்புகிறீர்கள்?</h3>
-        <div class="modal-options">
-            <button id="read-text" class="modal-btn">
-                <i class="fas fa-book-open"></i>
-                <span>உரையாக படிக்க</span>
-            </button>
-            <button id="read-voice" class="modal-btn">
-                <i class="fas fa-volume-up"></i>
-                <span>குரலாக கேட்க</span>
-            </button>
+    <!-- Animation Modal -->
+    <div id="animation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-animation-modal">&times;</span>
+            <h3>AI செய்தி அனிமேஷன்</h3>
+            <div class="modal-options">
+                <div id="animation-result">
+                    <div class="animation-placeholder">
+                        <i class="fas fa-film animation-icon"></i>
+                        <p>செய்தியின் வேடிக்கையான விளக்கத்தை உருவாக்குகிறது...</p>
+                    </div>
+                </div>
+                <div class="animation-controls" id="animation-controls" style="display: none;">
+                    <button id="restart-animation" class="animation-btn">
+                        <i class="fas fa-redo"></i> மீண்டும் தொடங்கு
+                    </button>
+                    <button id="download-animation" class="animation-btn">
+                        <i class="fas fa-download"></i> பதிவிறக்கு
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Modal for text options -->
-<div id="text-options-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h3>எந்த வகையான உரையை படிக்க விரும்புகிறீர்கள்?</h3>
-        <div class="modal-options">
-            <button id="read-full" class="modal-btn">
-                <i class="fas fa-newspaper"></i>
-                <span>முழு செய்தி</span>
-            </button>
-            <button id="read-summary" class="modal-btn">
-                <i class="fas fa-file-contract"></i>
-                <span>சுருக்கமான செய்தி</span>
-            </button>
+    <!-- Read Modal -->
+    <div id="read-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-read-modal">&times;</span>
+            <h3>செய்தியை எப்படி படிக்க விரும்புகிறீர்கள்?</h3>
+            <div class="modal-options">
+                <button id="read-text" class="modal-btn">
+                    <i class="fas fa-book-open"></i>
+                    <span>உரையாக படிக்க</span>
+                </button>
+                <button id="read-voice" class="modal-btn">
+                    <i class="fas fa-volume-up"></i>
+                    <span>குரலாக கேட்க</span>
+                </button>
+                <button id="animate-btn" class="modal-btn">
+                    <i class="fas fa-film"></i>
+                    <span>அனிமேஷன் உருவாக்கு</span>
+                </button>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Summary page (hidden by default) -->
-<div id="summary-page" class="hidden-page">
-    <div class="container">
-        <button id="back-btn" class="back-btn"><i class="fas fa-arrow-left"></i> திரும்பு</button>
-        <div id="summary-content"></div>
+    <!-- Text Options Modal -->
+    <div id="text-options-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-text-modal">&times;</span>
+            <h3>எந்த வகையான உரையை படிக்க விரும்புகிறீர்கள்?</h3>
+            <div class="modal-options">
+                <button id="read-full" class="modal-btn">
+                    <i class="fas fa-newspaper"></i>
+                    <span>முழு செய்தி</span>
+                </button>
+                <button id="read-summary" class="modal-btn">
+                    <i class="fas fa-file-contract"></i>
+                    <span>சுருக்கமான செய்தி</span>
+                </button>
+            </div>
+        </div>
     </div>
-</div>
 
-    <!-- Modal for slang selection -->
+    <!-- Summary Page -->
+    <div id="summary-page" class="hidden-page">
+        <div class="container">
+            <button id="back-btn" class="back-btn"><i class="fas fa-arrow-left"></i> திரும்பு</button>
+            <div id="summary-content"></div>
+        </div>
+    </div>
+
+    <!-- Slang Selection Modal -->
     <div id="slang-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <span class="close-modal" id="close-slang-modal">&times;</span>
             <h3>எந்த பேச்சு மொழியில் கேட்க விரும்புகிறீர்கள்?</h3>
             <div class="modal-options slang-options">
                 <button data-slang="normal" class="modal-btn">
